@@ -8,17 +8,26 @@ echo "Today i am running ${num_of_script_today}"
 echo "In total between yesterday and today, i ran $((num_of_script_yesterday + num_of_script_today))"
 
 echo "For records sake, i am marking the date for today. And today's date is $(date)"
-sudo yum install git
-sudo yum install tree -y
-mkdir shell_scripting
-touch i_am_learning_shell_script
-mv i_am_learning_shell_script shell_scripting/
+
+if [[ $USER == "ec2-user" ]]; then
+       echo "user: ${USER} is installing packages on 'ubuntu server'"		
+	sudo yum install git
+	sudo yum install tree -y
+elif [[ $USER == "ubuntu" ]]; then
+	echo "user: ${USER} is installing packages on 'ubuntu server'"
+	sudo snap install tree -y
+	sudo apt install git -y
+elif [[ $OS == "OS=Windows_NT" ]]; then
+       echo "we donot have any installer yet. we advice you toil on google by searching" 
+
+else 
+ 	echo "hey you what system do you use?"	
+fi	
 
 echo "still on the move engineer ${my_name}"
-ls -l
 ls
-cat shell_scripting/
 tree
+
 history
 
 echo "this is yours truly engineer ${my_name}"
