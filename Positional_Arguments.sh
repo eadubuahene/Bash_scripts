@@ -7,3 +7,8 @@ fi
 echo "${1} is borrowing this script and he works for ${2} as a ${3}"
 
 echo $#
+echo $0
+echo $*
+echo $0
+
+cp $0 $0-backup
